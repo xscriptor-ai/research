@@ -11,9 +11,11 @@ tags: ["technology", "research"]
 
 ## 1. Meta
 
-- **Image**: has published *Stable Signature*, a method that embeds a signature **in the output of generative image models** (the mark is learned during decoder fine-tuning), integrated into part of its generators.
+- **Image**: *Stable Signature* (arXiv:2307.15521) embeds a signature **in the output of generative image models** (the mark is learned during decoder fine-tuning), integrated into part of its generators.
+- **Audio**: *AudioSeal* (arXiv:2401.17264, ICML 2024) — localized audio watermarking with a generator/detector architecture and a single-pass detector; open-sourced.
+- **Video**: *Video Seal* (arXiv:2412.09492) — open neural video watermarking with temporal propagation of an image watermark.
 - **Text**: no documented deployment of a statistical mark. In the debates over California's AI bill it opposed mandatory text marking over quality and false-positive concerns.
-- **Stance**: oscillating — it researches marks for media, resists text marking.
+- **Stance**: oscillating — it researches and open-sources marks for media, resists text marking.
 
 ## 2. Microsoft
 
@@ -29,7 +31,26 @@ tags: ["technology", "research"]
 
 - Provenance signals at platform level; no documented embedded text mark.
 
-## 5. Peripheral cases
+## 5. Amazon
+
+- **Image**: Titan Image Generator applies a **tamper-resistant invisible watermark** by default, with a watermark detection API in Bedrock; C2PA support.
+- **Text** (Nova): no documented statistical mark.
+
+## 6. Adobe
+
+- **Content Credentials (C2PA)** on generated images and video and across editing workflows; co-founder of the Content Authenticity Initiative.
+- Does not generate text: text marking is out of scope for Firefly.
+
+## 7. Stability AI
+
+- **Image**: invisible frequency-domain watermark applied to generated images (the `invisible-watermark` library, DWT+DCT, plus learned variants); API outputs carry it by default. Per the library's own tests it does not survive resize or rotation well.
+- No LLM product; no text mark.
+
+## 8. ElevenLabs
+
+- **Audio**: inaudible marking of generated speech per company announcements; listed among SynthID adopters by the sources cited in the [Google folder](../google/README.md). No text output.
+
+## 9. Peripheral cases
 
 - **Suno** (music): announced (August 6, 2026) it will mark tracks generated on its platform, amid litigation. It is **audio** marking, not text.
 - **Substack**: alliance with **Pangram** (July 2026) to flag AI-generated content in newsletters — third-party detection/labeling, not a generator-embedded mark.

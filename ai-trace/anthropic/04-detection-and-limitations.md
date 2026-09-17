@@ -18,7 +18,7 @@ Detecting a text mark is a **statistical, keyed procedure**. In general terms:
 3. it computes an **aggregated statistic** over the tokens (sum of $u$, number of "greens", reflection *score*, etc.);
 4. it compares against a threshold: above, *marked* is declared; below, not.
 
-The result is a **probabilistic verdict**, not a deterministic proof. Anthropic confirms that detection "indicates that the content *may* have been processed by Claude", and that it will publish the detection mechanisms in forthcoming technical documentation. The European Code of Practice also obliges **sharing detection capability with third parties**.
+The result is a **probabilistic verdict**, not a deterministic proof. Anthropic confirms that detection "indicates that the content *may* have been processed by Claude", and that it will publish the detection mechanisms in forthcoming technical documentation. The European Code of Practice also obliges **sharing detection capability with third parties** —but not making the detector public: Anthropic currently offers detection as a **private preview API** for eligible organizations (regulators, law enforcement, media, fact-checkers, independent researchers, educational organizations and EU civil society, plus enterprises with their own compliance duties).
 
 ## 2. The false precision of detection
 

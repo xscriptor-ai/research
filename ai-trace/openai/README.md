@@ -15,6 +15,7 @@ tags: ["technology", "legislation", "privacy"]
 
 - **Does not document** a watermark embedded in ordinary ChatGPT text.
 - Its current provenance system (based on **C2PA** and Google's **SynthID** standard) covers supported **images and audio**.
+- **Video** (Sora): generated videos carry a visible moving mark plus C2PA metadata.
 - Its help page indicates the goal is to **expand provenance signals to all formats, including text** — language of a *future direction*, not of an ongoing deployment.
 
 ## 2. The 2024 research

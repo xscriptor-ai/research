@@ -84,7 +84,7 @@ In other words: the agent acts **downstream** of the sampler, never upstream.
 
 ## 6. The concrete case of this conversation
 
-One example is worth a thousand abstractions. If an agent serves `deepseek-v4-flash` through an **API** (as happens here), then:
+One example is worth a thousand abstractions. If an agent serves a DeepSeek model (`deepseek-flash`) through an **API** (as happens here), then:
 
 - the sampler belongs to the infrastructure serving the model, **not to the user**;
 - a prompt — neither the user's nor the agent's own — can disable what that infrastructure decides to apply;

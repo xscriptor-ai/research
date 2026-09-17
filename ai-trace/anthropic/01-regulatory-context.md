@@ -44,7 +44,7 @@ On the page *How Claude marks AI-generated content*, Anthropic makes concrete co
 
 1. **New models mark from day one.** Models launched in the EU on or after August 2, 2026 include machine-readable marking at launch: generated text carries an **embedded watermark**, and generated files carry **digitally signed provenance metadata**.
 2. **The marking works on every surface.** It applies to output from supported models across the Claude Platform (API), Claude, Claude Code, Claude Cowork and Claude Tag, and through cloud partners (AWS, Google Cloud, Microsoft Foundry). **Worldwide**, not just in the EU.
-3. **They will facilitate detection.** Anthropic commits to letting users and third parties detect its marks, as the Code requires, and to publishing the corresponding technical documentation.
+3. **They will facilitate detection.** Anthropic commits to facilitating third-party detection of its marks, as the Code requires —today through a detection API in *private preview* for eligible organizations (regulators, law enforcement, media, fact-checkers, independent researchers, educational organizations and EU civil society, plus enterprises with their own compliance duties)— and to publishing the corresponding technical documentation.
 4. **Earlier models in progress.** The law includes a transition period for models launched before August 2, 2026, and Anthropic is working to add marking to those models as well.
 
 ## 6. Why the scope is global

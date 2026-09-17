@@ -18,7 +18,7 @@ Anthropic **has not published the specific algorithm** nor the exact nature of t
 3. it **does not change the distribution** or quality: "does not change the meaning, quality, or readability";
 4. it is **multi-surface**: present in the app, API, Claude Code, Cowork, Claude Tag;
 5. it **survives editing** (copy-paste, insertions, deletions, partial substitutions);
-6. it will be **detectable by third parties** (the Code of Practice requires it), with technical documentation pending publication.
+6. it will be **detectable by third parties** (the Code of Practice requires facilitating third-party detection; Anthropic currently offers it in private preview to eligible organizations), with technical documentation pending publication.
 
 Additionally, Anthropic's *Transparency* page, updated on July 23, 2026, says they have *"worked with industry and academia"* on marking techniques. Before that date, the same page stated that they did **not** provide text marking.
 
@@ -76,9 +76,9 @@ $$
 
 #### Declared results
 
-- with **54 bits** embedded in **300 tokens**, it improves bit accuracy by 8–12 % and correctly identifies up to 11 % more marked texts at 1 % FPR;
+- with **54 bits** embedded in **300 tokens**, detectability is near-perfect (TPR@1 % FPR ≈ 0.99–1.0, bit accuracy > 0.95) while perplexity stays close to non-watermarked text; against the previous state of the art (StealthInk) that means ~8–12 more points of bit accuracy and up to ~11 more points of TPR at 1 % FPR;
 - **robust to insertions, deletions and substitutions**;
-- under **heavy paraphrasing**, TPR drops to ≈ **57.8 %** (at 1 % FPR), significantly better than MCmark, but not invulnerable.
+- under **heavy paraphrasing**, *detection* survives partially —TPR ≈ **57.8 %** at 1 % FPR, in the 36-bit/400-token setting—, better than MCmark, but **payload recovery collapses** (bit accuracy ≈ 0.54, near random), as the paper itself acknowledges: "reliable payload recovery under strong rewriting remains open".
 
 ## 4. Candidate comparison
 
@@ -87,7 +87,7 @@ $$
 | Kirchenbauer (2023) | Logit bias | Yes | Medium | Low | Low |
 | Aaronson–Kirchner (2023) | $u$-values | No | Low | Low | Medium |
 | MCmark (2025) | Unbiased | No | Medium | Low (TPR 11–48 %) | High |
-| **MirrorMark (2026)** | mod-1 reflection + CABS | No | High | Medium (TPR ≈ 57.8 %) | **Very high** |
+| **MirrorMark (2026)** | mod-1 reflection + CABS | No | High | Medium (detection TPR ≈ 57.8 %; payload ≈ random) | **Very high** |
 
 ## 5. Verdict
 

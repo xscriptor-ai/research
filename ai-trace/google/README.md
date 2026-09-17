@@ -16,7 +16,7 @@ tags: ["technology", "cryptography", "research"]
 **SynthID** is Google DeepMind's content marking system. It covers **image, audio, video and text** and has two components:
 
 - **Perceptual mark** (image, audio, video): a signal embedded in the content itself that survives screenshots, re-sharing on social networks and format changes — something metadata (EXIF, C2PA) does not guarantee.
-- **Text mark (SynthID-Text)**: embedded **during generation**, in token choice, without altering the perceived distribution. It is the direct relative of the technique the dossier attributes to Claude.
+- **Text mark (SynthID-Text)**: embedded **during generation**, in token choice, without altering the perceived distribution. The mechanism is public — **Tournament sampling**, published in Nature (Dathathri et al., 2024) and deployed in Gemini — and it is the direct relative of the technique the dossier attributes to Claude (details in [methods.md](methods.md)).
 
 ## 2. Coverage and scale (2026)
 
@@ -41,12 +41,15 @@ The sector's convergence on a single method has two faces: interoperability (a c
 
 Detection **is not public**: Google keeps the keys private and offers verification through its own channel. It is the same asymmetry described in [04 — Detection and limitations](../anthropic/04-detection-and-limitations.md): without a public key, the evader cannot calibrate attacks against the real detector.
 
+**[S, pending confirmation]** Third-party tooling (`watermarks-remover` vendor notes) reports that Google **retired the SynthID-text detector on its API in August 2026** — a claim about the detector endpoint, not necessarily about the generation-side mark (see [methods.md](methods.md) §5).
+
 ## 5. Critical reading
 
 SynthID proves that content marking is viable and deployable at industrial scale. It also proves the **privatization of verification**: the mark exists so that *Google* can read it. The transparency pursued by the European AI Act depends on opening these mechanisms to third parties; until then, "transparency" is one-sided: the provider sees, the user does not.
 
 ## References
 
+- Dathathri et al., *Scalable watermarking for identifying large language model outputs* — [Nature 634, 818–823 (2024)](https://www.nature.com/articles/s41586-024-08025-4)
 - BuildMvpFast, *SynthID Becomes the Standard: OpenAI, NVIDIA, ElevenLabs, Kakao* — [link](https://www.buildmvpfast.com/blog/synthid-content-provenance-c2pa-watermarking-ai-2026)
 - Perplexity AI Magazine, *SynthID 2026: OpenAI, ElevenLabs, Nvidia adopt AI watermark* — [link](https://perplexityaimagazine.com/ai-news/synthid-openai-elevenlabs-nvidia-ai-watermark-standard-2026/)
 - Presenc AI, *AI Content Watermarking Adoption 2026* — [link](https://presenc.ai/research/ai-content-watermarking-adoption-2026)

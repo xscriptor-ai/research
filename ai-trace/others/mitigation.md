@@ -18,6 +18,8 @@ For most of this group (Microsoft, Cohere, Mistral in text, xAI) the current sig
 
 There is no statistical pattern in the text to destroy.
 
+One layer can appear on text even when the vendor documents none: **Unicode carriers** added by a platform, interface or downloader. They are exact to remove — with typographic care for legitimate joiners, bidi controls and spaces ([Unicode carriers](../unicode.md)).
+
 ## 2. The cases with a real signal
 
 ### Meta — image (*Stable Signature*)
@@ -38,9 +40,13 @@ Perceptual audio marking: regeneration or re-sampling; metadata stripping does n
 
 | Company | Current signal | Type | Mitigation |
 |---------|----------------|------|------------|
-| Meta | *Stable Signature* (image) | Perceptual | Regeneration |
+| Meta | *Stable Signature* (image), AudioSeal (audio), Video Seal (video) | Learned/neural | Regeneration / destructive transforms (signal in pixels or waveform) |
 | Microsoft | Metadata/labels | Bytes/UI | Stripping |
-| Mistral | Labels/metadata | Bytes/UI | Stripping; open weights = no mark |
+| Amazon | Invisible image watermark (Titan), C2PA | Learned + metadata | Regeneration for the pixel layer; stripping for metadata |
+| Adobe | Content Credentials (C2PA) | Bytes | Stripping |
+| Stability | Frequency-domain image watermark (`invisible-watermark`) | Signal in pixels | Regeneration / destructive transforms |
+| ElevenLabs | Audio watermark | Signal in waveform | Regeneration / re-synthesis |
+| Mistral | Labels/metadata | Bytes/UI | Stripping; open weights = no provider mark |
 | Cohere | Metadata | Bytes | Stripping |
 | Suno | Perceptual audio | Perceptual | Regeneration |
 | xAI | Not documented | — | — |

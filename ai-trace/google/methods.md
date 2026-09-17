@@ -28,6 +28,8 @@ The text is marked **during generation**, manipulating the randomness of token s
 - detection aggregates evidence over the whole passage; short passages do not accumulate enough signal;
 - it survives copy-paste and minor edits; paraphrasing and translation degrade it.
 
+The mechanism is public: **Tournament sampling** (Dathathri et al., *Scalable watermarking for identifying large language model outputs*, Nature 634, 818–823, 2024). Candidate tokens sampled from the model's distribution compete in layers; keyed pseudorandom functions pick the winners, so the output distribution is preserved (non-distortionary configuration, validated on ~20 million live Gemini responses) while the choices correlate with the key. The seed is a hash of the last four tokens plus the watermark key, and detection scores that correlation without running the LLM. The paper itself documents the limits: the mark weakens with low-entropy outputs and with edits or paraphrasing, and the scheme is exposed to stealing, spoofing and scrubbing attacks.
+
 ## 3. SynthID in image, audio and video: the perceptual mark
 
 For media, SynthID does not rely on metadata but on **perceptual content**:
@@ -46,8 +48,12 @@ For media, SynthID does not rely on metadata but on **perceptual content**:
 
 Detection **is not public**: SynthID's keys are private and verification is offered through Google's channel. That prevents third parties from calibrating attacks against the real detector (the same asymmetry described in [Anthropic — 04](../anthropic/04-detection-and-limitations.md)).
 
+**[S, pending confirmation]** The `watermarks-remover` vendor notes report that Google **retired the SynthID-text detector on its API in August 2026**. That concerns the *detector* endpoint, not necessarily the generation-side mark; verification would fall back to Google's internal channel. Treat as a third-party claim until confirmed against Google documentation.
+
 ## References
 
+- Dathathri et al., *Scalable watermarking for identifying large language model outputs* — [Nature 634, 818–823 (2024)](https://www.nature.com/articles/s41586-024-08025-4)
 - BuildMvpFast, *SynthID Becomes the Standard* — [link](https://www.buildmvpfast.com/blog/synthid-content-provenance-c2pa-watermarking-ai-2026)
 - Perplexity AI Magazine, *SynthID 2026* — [link](https://perplexityaimagazine.com/ai-news/synthid-openai-elevenlabs-nvidia-ai-watermark-standard-2026/)
 - TextSight, *Google SynthID watermarking explained* — [link](https://www.textsight.ai/blog/google-synthid-watermarking-explained/)
+- `watermarks-remover` vendor notes — [GitHub](https://github.com/guillaumemeyer/watermarks-remover)

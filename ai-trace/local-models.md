@@ -11,7 +11,7 @@ tags: ["technology", "privacy", "research"]
 
 ## 1. The principle (read before the list)
 
-The text watermark is not **in the weights** of the model. The dossier's schemes (Kirchenbauer, Aaronson–Kirchner, MCmark, MirrorMark) are applied **at sampling time**, in the decoding layer, using a secret key. The weights are inert: they do not carry the signature inside.
+The provider marks analyzed in this dossier are not **in the weights** of the model. The dossier's schemes (Kirchenbauer, Aaronson–Kirchner, MCmark, MirrorMark) are applied **at sampling time**, in the decoding layer, using a secret key. The weights are inert: they do not carry the signature inside — a different class, marks baked into weights by fine-tuning, is addressed in section 6.
 
 From this follows the rule:
 
@@ -19,7 +19,7 @@ $$
 \text{mark present} \iff \text{the sampler uses the key } K
 $$
 
-**Consequence**: if you download the weights of any open-weight model and run them with your own engine (without enabling any marking scheme), **there is no key to correlate** and, by construction, **there is no signature**. The guarantee is structural, not a vendor promise.
+**Consequence**: if you download the weights of any open-weight model and run them with your own engine (without enabling any marking scheme), **there is no key to correlate** and, by construction, **there is no provider sampler mark**. The guarantee is structural, not a vendor promise.
 
 **The caveat that invalidates everything**: if instead of running the weights you access the model through an **API, proxy, router, or agent** (as in this conversation), the sampler belongs to whoever serves the model, and the absence of a mark stops being a guarantee — see [DeepSeek — mitigation](deepseek/mitigation.md). **This list only counts if you actually run the weights locally.**
 
@@ -52,7 +52,7 @@ To run these weights with a sampler under your control:
 | **Hugging Face Transformers** | Python pipelines; maximum control over sampling. |
 | **GPT4All** | Simple desktop alternative. |
 
-**Practical rule**: use the engine's **default sampler, without post-processing layers or decoding hooks**. If you do not enable any marking scheme, there is no mark. (Some example repos include watermarking code: just do not use it.)
+**Practical rule**: use the engine's **default sampler, without post-processing layers or decoding hooks**. If you do not enable any marking scheme, there is no mark. (Some example repos and engines include watermarking code: the self-hosted engine `arbi-serve` ships a keyed-Gumbel mark behind `ARBI_WATERMARK_KEY`, and `vLLM-Watermark` is an optional package for vLLM — just do not enable them. That the layer exists in the ecosystem does not mean it ships active by default.)
 
 ### Do tools like LM Studio come with a keyless sampler?
 
@@ -97,6 +97,7 @@ weights (HF, no mark) ──► engine with its own sampler (no key) ──► t
 1. **No watermark is not no trace.** A local model leaves no *watermark signature*, but it can leave **other signals**: the model's own statistical style (which "AI writing" detectors analyze) or the quantization footprint. These are not keyed marks; they are predictive patterns, and they differ from what this dossier covers.
 2. **The weights are not "the guarantee"; the sampler is.** If tomorrow a vendor published weights *alongside* a marking scheme enabled by default, the guarantee would still live in not activating it. The rule does not depend on the model's name.
 3. **Local verification is its own reward**: running locally, you can inspect the engine, the sampler and the code — impossible with an API. The guarantee is, in the end, the guarantee of *control*.
+4. **Two exceptions outside this guarantee.** A mark **baked into the weights** by fine-tuning/instruction-tuning (a real research class, not documented in these families) would travel with the weights; and an **engine-shipped marking layer** (keyed-Gumbel in `arbi-serve`, `vLLM-Watermark`) is added by whoever runs the engine. The rule "own sampler, no mark" assumes neither is activated. It guarantees the absence of a *provider sampler mark*, not the absence of any conceivable mark.
 
 ## 7. Reading
 

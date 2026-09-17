@@ -31,9 +31,9 @@ Instruction:  "Rewrite the following text in your own words,
 Output:       [text with no correlation to Claude's key]
 ```
 
-The second model re-samples every token choice from its own distribution, **without** Claude's key. Claude's mark cannot survive by definition; what remains is the *second* model's own trace (which may or may not be marked, depending on the provider).
+The second model re-samples every token choice from its own distribution, **without** Claude's key. The generation-time correlation is broken by construction; *detection* can retain residual evidence (MirrorMark's best paraphrase figure is TPR ≈ 57.8 %, while payload recovery collapses to near random — see [common mitigation](../mitigation.md) §4), and what remains is the *second* model's own trace (which may or may not be marked, depending on the provider).
 
-**Effectiveness**: very high against Kirchenbauer and MCmark (MCmark drops to TPR 11–48 %). Against MirrorMark, heavy paraphrasing reduces TPR to ≈ 57.8 %: better, but not invulnerable — and a more aggressive paraphrase (radical rewriting, not stylistic) brings the detection rate close to random.
+**Effectiveness**: very high against Kirchenbauer and MCmark (MCmark drops to TPR 11–48 %). Against MirrorMark, heavy paraphrasing reduces *detection* TPR to ≈ 57.8 % (36-bit/400-token setting) and collapses payload recovery to near random — and a more aggressive paraphrase (radical rewriting, not stylistic) brings detection itself close to random.
 
 ### 2.2. Round-trip translation
 
@@ -70,7 +70,7 @@ $$
 \min_{T'} \; \bigl| \text{score}(T') - \mu_0 \bigr| \quad \text{subject to} \quad \text{sim}(T', T) \geq \tau
 $$
 
-where $\mu_0$ is the mean of the statistic under unmarked text and $\text{sim}$ a semantic-similarity measure (for example, *cosine similarity* over embeddings). If the detector is public (the European Code of Practice *requires* it to be), the evader can **access the oracle**, measure each fragment's signal, and apply discrete gradients or local search to minimize it. This is the most serious threat to any scheme: **a public detector is, by construction, an oracle for training the attack**.
+where $\mu_0$ is the mean of the statistic under unmarked text and $\text{sim}$ a semantic-similarity measure (for example, *cosine similarity* over embeddings). When the evader gains access to the detector —public, leaked, or by being one of the eligible organizations admitted to Anthropic's private preview—, it can **access the oracle**, measure each fragment's signal, and apply discrete gradients or local search to minimize it. This is the most serious threat to any scheme: **an accessible detector is, by construction, an oracle for training the attack**. (The Code of Practice obliges *facilitating* third-party detection; it does not require the detector to be public.)
 
 ### 2.7. The route that avoids the problem: not generating marked text
 
@@ -86,12 +86,12 @@ The last route is not an attack: it is the legitimate use Anthropic itself recog
 
 | Attack | Effort | Semantic fidelity | Estimated effectiveness vs. MirrorMark | Collateral signal cost |
 |--------|--------|-------------------|---------------------------------------|------------------------|
-| Paraphrase with another model | Low | Medium | High (≈ TPR 57.8 % in heavy paraphrase; can reach random with radical rewriting) | Leaves the 2nd model's trace |
+| Paraphrase with another model | Low | Medium | High (detection TPR ≈ 57.8 %; payload ≈ random) | Leaves the 2nd model's trace |
 | Round-trip translation | Low | Medium-low (drift) | High | Loss of nuance |
 | Re-sampling (unmarked model) | Medium | High | Very high (no correlation) | Requires model access |
 | Selective mechanical editing | Medium-high | Medium-high | Medium (CABS localizes; must attack signal regions) | Laborious |
 | Blending / splicing | Medium | High | Medium-high (if marked fraction is low) | — |
-| Oracle attack (optimization) | High | High | Potentially total (if detector is public) | Requires the detector |
+| Oracle attack (optimization) | High | High | Potentially total (if the detector is accessible) | Requires the detector |
 | Pre-August-2026 / open models | Low | High | Total (no mark) | Not applicable |
 
 ## 4. The two asymmetries in the evader's favor

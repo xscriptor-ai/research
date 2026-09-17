@@ -1,7 +1,7 @@
 ---
 title: "Anthropic — Claude"
 description: "Research dossier on the text watermark Anthropic is rolling out in Claude models."
-date: "2026-08-14"
+date: "2026-09-17"
 tags: ["technology", "cryptography", "privacy", "legislation"]
 ---
 
@@ -32,6 +32,16 @@ Research on the text watermark that **Anthropic** is rolling out in **Claude** m
 - **How**: the mark is *woven into the text* by manipulating the sampling randomness; it survives copy-paste and some edits; generated files also receive signed C2PA provenance metadata.
 - **Statistical pattern**: Anthropic has not revealed the algorithm. Public evidence (distortion-free quality, multi-bit nature, model level, third-party detection) points to the **distortion-free** family, with **MirrorMark** (George Mason, arXiv:2601.22246) as the most likely candidate per Search Engine Journal's analysis.
 - **Mitigation**: the signature is a statistical pattern; it is destroyed by breaking the correlation between the text and the secret key. Effective routes are paraphrasing with another model, round-trip translation, re-sampling with an unmarked model, and using earlier or open-weight models. None is perfect: modern multi-bit marks are designed to survive light edits.
+
+## Model support and detection access (September 2026)
+
+Per the support page consulted on 17 September 2026:
+
+- **Text watermarks on first-party surfaces**: Claude Fable 5.1, Fable 5, Mythos 5.1, Mythos 5, Opus 5, Opus 4.8, Opus 4.7, Opus 4.6, Opus 4.5, Sonnet 5, Sonnet 4.6, Sonnet 4.5 and Haiku 4.5.
+- **Cloud partners** (AWS, Google Cloud, Microsoft Foundry): roll-out in progress; for Opus 5, text watermarking became gradually available on cloud partner surfaces from 14 September 2026, fully within one week.
+- **Files**: C2PA Content Credentials where file generation is supported.
+- **Detection**: a **private preview** API for eligible organizations (regulators, law enforcement, media, fact-checkers, independent researchers, educational organizations and EU civil society, plus enterprises with their own compliance duties); access is planned to expand, and technical documentation is pending.
+- **Transition**: models launched before August 2, 2026 are being covered progressively, all by December 2, 2026.
 
 ## Industry panorama (sibling folders)
 

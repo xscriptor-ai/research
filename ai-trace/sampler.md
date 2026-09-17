@@ -55,13 +55,13 @@ $$
 **The same input always produces the same "dice".** The provider exploits this property in two ways:
 
 1. **With distortion** (Kirchenbauer): biases the distribution before drawing (favors a "green list" of tokens), and the detector counts how many greens appear.
-2. **Without distortion** (MirrorMark, SynthID-Text): does not touch the distribution, but *manipulates the dice* — e.g., reflects the value $u$ around a pivot:
+2. **Without distortion** (MirrorMark, SynthID-Text): does not change the token distribution, but manipulates the *dice*. MirrorMark reflects the value $u$ around a message-specific pivot:
 
 $$
 u' = (2\tau - u) \bmod 1
 $$
 
-The probability of each token does not change, but **the observed value encodes a bit**.
+The probability of each token does not change, but **the observed value encodes a symbol**. SynthID-Text uses a different distortion-free mechanism — **Tournament sampling** (Dathathri et al., Nature 2024): several candidate tokens sampled from the distribution compete in layers, and keyed pseudorandom functions decide the winners; the output stays distributionally equivalent while correlating with the key. In both families the detector reproduces the same dice and compares.
 
 The detector, knowing $K$, **reproduces those same dice** and compares: if the observed values correlate with the key, there is a mark. Hence the rule running through the whole dossier:
 

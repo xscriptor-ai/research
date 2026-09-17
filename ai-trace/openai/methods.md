@@ -16,7 +16,7 @@ OpenAI documents provenance signals for supported **images and audio**, based on
 - **C2PA** (signed provenance metadata);
 - Google's **SynthID** standard, adopted as a verification format.
 
-For **ordinary ChatGPT text** it documents no embedded mark. Its help page indicates the goal is **expanding provenance to all formats, including text** — future-direction language, not deployment.
+**Video** (Sora) adds a visible moving mark plus C2PA metadata on generated videos. For **ordinary ChatGPT text** it documents no embedded mark. Its help page indicates the goal is **expanding provenance to all formats, including text** — future-direction language, not deployment.
 
 ## 2. The method researched in 2024
 

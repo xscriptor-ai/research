@@ -29,18 +29,30 @@ Visible changes: *established itself → become*, *cost-effective → best retur
 
 > Solar energy has today become one of the renewable technologies offering the best return. Silicon panels soften household energy spending over the years and loosen the bond with fossil fuels. Putting them up, in turn, drives local employment and nudges the power sector toward decarbonization. Even so, storing energy to cover the sunless hours remains the obstacle the field has not fully cracked yet.
 
-Here **no words match the original**: every token was re-chosen from the distribution of *another* model (without the first one's key). There is no correlation left for a detector to reproduce → **signature destroyed**, at the cost of losing the original's tone and part of its precision.
+Here the strong-mitigation text still shares content words with the original (*solar energy*, *fossil fuels*, *decarbonization*…), but **every token was re-sampled** from the distribution of *another* model (without the first one's key). Vocabulary overlap is irrelevant: what matters is that no keyed correlation survives for a detector to reproduce → **signature destroyed**, at the cost of losing the original's tone and part of its precision.
 
-## 4. The mitigation ladder
+## 4. The other invisible layer: Unicode carriers
+
+Not every mark is statistical. A text can carry invisible characters — zero-width spaces, word joiners, tag characters, exotic spaces — inserted by an interface, a downloader or a platform. The text reads identically, and the characters survive copy-paste because they are ordinary characters of the string.
+
+```
+With carriers:    Solar[ZWSP] energy[ZWSP] has become one of the[ZWSP] renewables with the best returns.
+Without carriers: Solar energy has become one of the renewables with the best returns.
+```
+
+`[ZWSP]` marks where a U+200B zero-width space would appear; in the real text, nothing is visible at those positions. This layer is not statistical and has no key: a scan finds the bytes and removal is exact (`watermarks-remover` calls it *Layer A*, versus the best-effort *Layer B* for sampling marks). What it costs is not detectability but typography: ZWJ sustains emoji sequences and Indic conjuncts, ZWNJ is part of Persian orthography, bidi controls are needed to mix Arabic/Hebrew with Latin, U+202F/U+00A0 are legitimate in French punctuation, and variation selectors pick emoji and CJK forms. A blind filter breaks real text — full inventory and safe removal in [Unicode carriers](unicode.md).
+
+## 5. The mitigation ladder
 
 | Phase | What is done | Detection result | Guarantee |
 |-------|--------------|------------------|-----------|
 | Original | — | Mark present | — |
 | Light | Synonyms + reordering | Signal degraded, may still be detected | No |
-| Strong | Rewriting with another model | Signature broken | High (but loses fidelity) |
-| Local open weights | Not generating with a foreign sampler | No mark from the start | Total |
+| Strong | Rewriting with another model | Signature broken or degraded (detection can retain residual evidence) | High (but loses fidelity) |
+| Unicode carriers | Strip invisible characters | Exact removal for that layer | Yes, deterministic (typographic care) |
+| Local open weights | Not generating with a foreign sampler | No provider mark from the start | Total for sampler marks |
 
-## 5. Reading the example
+## 6. Reading the example
 
 The example illustrates the central asymmetry of the dossier: the mark does not live in the words that are seen, but in the **randomness that chose them**. Changing terms and reordering moves the surface but leaves intact the correlation of the words that remain. Only a **new sampling** — rewriting with another model, round-trip translation, or regenerating from your own weights — breaks that correlation. The total exception remains not generating with a foreign sampler: in that case there is no signature to remove, because it was never created.
 
@@ -49,4 +61,5 @@ The example illustrates the central asymmetry of the dossier: the mark does not 
 ## References
 
 - [Common mitigation](mitigation.md) — the general framework
+- [Unicode carriers](unicode.md) — the other invisible layer, byte by byte
 - [Anthropic — 05 Mitigation](anthropic/05-mitigation.md) — Claude-centered version

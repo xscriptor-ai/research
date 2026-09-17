@@ -8,7 +8,7 @@ Each topic is a self-contained folder with its own `README.md` index.
 
 | Topic | Content |
 |---|---|
-| [ai-trace](ai-trace/) | Invisible AI traces in language models — company-by-company watermarking methods, detection, and mitigation (EU AI Act context). |
+| [ai-trace](ai-trace/) | Invisible traces in language models — company/model watermarking catalogue, statistical marks and Unicode carriers, detection, and realistic mitigation (EU AI Act and Chinese labeling regimes). |
 
 ## Adding a topic
 
