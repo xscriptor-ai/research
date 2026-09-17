@@ -39,9 +39,12 @@ The sector's convergence on a single method has two faces: interoperability (a c
 
 ## 4. Verification
 
-Detection **is not public**: Google keeps the keys private and offers verification through its own channel. It is the same asymmetry described in [04 — Detection and limitations](../anthropic/04-detection-and-limitations.md): without a public key, the evader cannot calibrate attacks against the real detector.
+Detection is **provider-mediated, not public**: keys stay private and verification goes through Google's own surfaces. Per Google DeepMind's SynthID page (consulted 17 September 2026):
 
-**[S, pending confirmation]** Third-party tooling (`watermarks-remover` vendor notes) reports that Google **retired the SynthID-text detector on its API in August 2026** — a claim about the detector endpoint, not necessarily about the generation-side mark (see [methods.md](methods.md) §5).
+- **Media**: images, video and audio can be checked by uploading them to Gemini; the **SynthID Detector** portal (launched 2026) verifies image/video/audio and is in early testing with journalists and media professionals (waitlist).
+- **Text**: no user-facing detection route is documented — the portal and the Gemini check cover image/video/audio, not text. This is consistent with the third-party report (`watermarks-remover` vendor notes) that Google **retired the SynthID-text detector on its API in August 2026**; the generation-side mark is a separate question.
+
+It is the same asymmetry described in [04 — Detection and limitations](../anthropic/04-detection-and-limitations.md): without detector access, the evader cannot calibrate attacks against the real detector.
 
 ## 5. Critical reading
 
@@ -49,6 +52,7 @@ SynthID proves that content marking is viable and deployable at industrial scale
 
 ## References
 
+- Google DeepMind, *SynthID* — [official page](https://deepmind.google/technologies/synthid/)
 - Dathathri et al., *Scalable watermarking for identifying large language model outputs* — [Nature 634, 818–823 (2024)](https://www.nature.com/articles/s41586-024-08025-4)
 - BuildMvpFast, *SynthID Becomes the Standard: OpenAI, NVIDIA, ElevenLabs, Kakao* — [link](https://www.buildmvpfast.com/blog/synthid-content-provenance-c2pa-watermarking-ai-2026)
 - Perplexity AI Magazine, *SynthID 2026: OpenAI, ElevenLabs, Nvidia adopt AI watermark* — [link](https://perplexityaimagazine.com/ai-news/synthid-openai-elevenlabs-nvidia-ai-watermark-standard-2026/)

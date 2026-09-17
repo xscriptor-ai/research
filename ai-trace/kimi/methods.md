@@ -18,17 +18,9 @@ Kimi's terms (*AI-Generated Content Identification Rules*) define two types of i
 
 Moonshot adds both by default to generated content, except for approved functions that allow removing the explicit identifier.
 
-## 2. The difference with Claude
+## 2. What is not documented
 
-The resemblance to Anthropic is superficial:
-
-| | Kimi | Claude |
-|---|---|---|
-| Implicit identifier | Marker in **file metadata** | **Mark in the text itself** |
-| Survives copy-paste | No | Yes |
-| Survives conversion | No | Partially |
-
-There is no official Kimi K3 documentation describing a **statistical model-level mark** embedded in normal text generation.
+There is no official Kimi K3 documentation describing a **statistical model-level mark** embedded in normal text generation. The contrast with Claude's embedded mark is summarized in the folder's [README](README.md).
 
 ## 3. The open model
 

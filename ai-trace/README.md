@@ -80,3 +80,13 @@ The exhaustive company-by-company and model-by-model catalogue is in [**Landscap
 5. MirrorMark — [arXiv:2601.22246](https://arxiv.org/abs/2601.22246)
 6. European Commission — [EU AI Act Transparency Code](https://digital-strategy.ec.europa.eu/en/policies/guidelines-ai-transparency-obligations)
 7. `watermarks-remover` — [GitHub](https://github.com/guillaumemeyer/watermarks-remover) (Unicode layer vs statistical layer, per-vendor notes)
+
+## Verification status (17 September 2026)
+
+**Primary-verified in this revision**: Anthropic support page (embedded watermark, C2PA, model support list, detection in private preview); MirrorMark (arXiv:2601.22246) and MCmark (arXiv:2502.11268); SynthID-Text (Nature 634, 818–823, 2024) and the official SynthID page (detection via Gemini and the Detector portal for media, none for text); EU Code of Practice timeline (TechCrunch, 11 August 2026); Meta's Stable Signature, AudioSeal and Video Seal; the `invisible-watermark` library; `watermarks-remover` (Layer A/B, vendor notes).
+
+**Secondary-only**: Google's "~100 % of new generations" and "100+ billion" figures and the SynthID adopter list (OpenAI, NVIDIA, ElevenLabs, Kakao); Suno and Substack announcements; Chinese vendors' hosted labeling details (no direct vendor page fetched).
+
+**Unconfirmed / to watch**: the retirement of the SynthID-text detector on Google's API (reported only by `watermarks-remover`; consistent with the absence of user-facing text detection, but not confirmed by Google); Anthropic's technical detection documentation (pending publication); whether any Chinese vendor adds a statistical mark beyond labels — unknown, not absent.
+
+**Known external deadlines that will change this dossier**: end of the EU transition period for pre-August-2026 models (2 December 2026); OpenAI's text-mark decision; Google's SynthID Detector general availability.

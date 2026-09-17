@@ -57,7 +57,7 @@ Each company has its own folder at the same level as this one:
 
 ## Method note
 
-This research is based on public sources: Anthropic's official support page (*How Claude marks AI-generated content*), coverage by TechCrunch, Nature, Axios and Search Engine Journal, the analysis of academic papers on LLM watermarking (Kirchenbauer et al., Aaronson–Kirchner, MCmark, MirrorMark), and the text of the AI Act. The sections on Anthropic's specific algorithm are **inferences, not confirmations**.
+This research is based on public sources: Anthropic's official support page (*How Claude marks AI-generated content*), coverage by TechCrunch, Nature and Search Engine Journal, the analysis of academic papers on LLM watermarking (Kirchenbauer et al., Aaronson–Kirchner, MCmark, MirrorMark), and the text of the AI Act. The sections on Anthropic's specific algorithm are **inferences, not confirmations**.
 
 ## Main sources
 

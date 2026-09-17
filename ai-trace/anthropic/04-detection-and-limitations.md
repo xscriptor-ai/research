@@ -31,7 +31,7 @@ The modern-mark literature is typically evaluated by **fixing the FPR at 1 %** a
 
 ## 3. C2PA and tamper detection
 
-For **files** (`.svg`, `.png`, `.jpg`), verification is not statistical but cryptographic: the **digital signature** of the C2PA metadata is verified.
+For **files** (`.svg`, `.png`, `.jpg`), verification is not statistical but cryptographic: the **digital signature** of the C2PA metadata is verified. Anthropic offers a free **Claude Content Checker** for this file-level check, and the text-detection API is in private preview (access request form).
 
 - If the signature is valid, the file was processed by Claude and **has not been altered** since.
 - If the file was edited and re-saved so that metadata was preserved but content changed, the signature **does not verify**: a sign of tampering.

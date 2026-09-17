@@ -46,12 +46,16 @@ For media, SynthID does not rely on metadata but on **perceptual content**:
 
 ## 5. Verification
 
-Detection **is not public**: SynthID's keys are private and verification is offered through Google's channel. That prevents third parties from calibrating attacks against the real detector (the same asymmetry described in [Anthropic — 04](../anthropic/04-detection-and-limitations.md)).
+Detection **is provider-mediated**: SynthID's keys are private and verification goes through Google's surfaces (consulted 17 September 2026):
 
-**[S, pending confirmation]** The `watermarks-remover` vendor notes report that Google **retired the SynthID-text detector on its API in August 2026**. That concerns the *detector* endpoint, not necessarily the generation-side mark; verification would fall back to Google's internal channel. Treat as a third-party claim until confirmed against Google documentation.
+- **Media**: upload image/video/audio to Gemini, or use the **SynthID Detector** portal (launched 2026, in early testing with journalists and media professionals).
+- **Text**: no user-facing detection route is documented; the portal and the Gemini check cover image/video/audio only. **[S]** Third-party tooling reports Google retired the SynthID-text detector on its API in August 2026 — a claim about the detector endpoint, not necessarily the generation-side mark.
+
+That prevents third parties from calibrating attacks against the real detector (the same asymmetry described in [Anthropic — 04](../anthropic/04-detection-and-limitations.md)).
 
 ## References
 
+- Google DeepMind, *SynthID* — [official page](https://deepmind.google/technologies/synthid/)
 - Dathathri et al., *Scalable watermarking for identifying large language model outputs* — [Nature 634, 818–823 (2024)](https://www.nature.com/articles/s41586-024-08025-4)
 - BuildMvpFast, *SynthID Becomes the Standard* — [link](https://www.buildmvpfast.com/blog/synthid-content-provenance-c2pa-watermarking-ai-2026)
 - Perplexity AI Magazine, *SynthID 2026* — [link](https://perplexityaimagazine.com/ai-news/synthid-openai-elevenlabs-nvidia-ai-watermark-standard-2026/)

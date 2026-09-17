@@ -34,8 +34,9 @@ Mark classes, ordered by whether they survive copying text and pasting it elsewh
 - Configurable: non-distortionary (quality preserved; validated on ~20 million live Gemini responses) or distortionary (more detectable, some quality cost).
 - Weakens with low entropy (deterministic answers) and with paraphrase/edits, as the paper itself documents.
 - Image, audio and video: **SynthID** perceptual variants; adopted as a reference by other vendors (see section 5).
-- **[S]** The dossier's sources claim ~100 % of new Google generations and 100+ billion marked items; detection is offered through Google's channel (private keys), not publicly.
-- **[S]** Third-party tooling (`watermarks-remover`, vendor notes) reports that Google **retired the SynthID-text detector on its API in August 2026** — pending confirmation; it does not imply the generation-side mark was retired.
+- **[P]** Detection is provider-mediated, per the official SynthID page (September 2026): image/video/audio can be checked by uploading to Gemini; the **SynthID Detector** portal (launched 2026) is in early testing with journalists and media professionals. **No user-facing text detection is documented.**
+- **[S]** The dossier's sources claim ~100 % of new Google generations and 100+ billion marked items.
+- **[S]** Third-party tooling (`watermarks-remover`, vendor notes) reports that Google **retired the SynthID-text detector on its API in August 2026** — consistent with the absence of a user-facing text detection route; it does not imply the generation-side mark was retired.
 
 ### Anthropic — Claude
 - **[P]** Embedded watermark in text, announced 11 August 2026 under the EU Code of Practice (Art. 50(2)); applied at the **model level** (generation), travels with copy-paste, may persist through some editing.
@@ -135,6 +136,7 @@ Read alongside the two implicit columns of this dossier: **statistical marks** (
 
 ## References
 
+- Google DeepMind, *SynthID* — [official page](https://deepmind.google/technologies/synthid/)
 - Dathathri et al., *Scalable watermarking for identifying large language model outputs*, Nature 634, 818–823 (2024) — [Nature](https://www.nature.com/articles/s41586-024-08025-4)
 - Anthropic Support, *How Claude marks AI-generated content* — [link](https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content)
 - OpenAI, *Understanding the source of what we see and hear online* (2024) — [link](https://openai.com/index/understanding-the-source-of-what-we-see-and-hear-online/)
