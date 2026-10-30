@@ -1,0 +1,12 @@
+provider,model,input_usd_per_mtok,output_usd_per_mtok,cache_read_usd_per_mtok,cache_write_short_usd_per_mtok,cache_write_long_usd_per_mtok,cache_write_window,notes
+Anthropic,Claude Haiku 5.5 <=100k prompt,0.10,0.50,0.01,0.125,0.20,5m/1h,"prompt >100k uses the next row; cache read 0.1x"
+Anthropic,Claude Haiku 5.5 >100k prompt,0.50,2.50,0.05,0.625,1.00,5m/1h,"long-prompt pricing; 5x input and output"
+Anthropic,Claude Sonnet 5.5,2.00,10.00,0.10,2.50,4.00,5m/1h,"cache read 0.05x"
+Anthropic,Claude Opus 5.5,4.00,20.00,0.20,5.00,8.00,5m/1h,"cache read 0.05x"
+Anthropic,Claude Fable 5.1,10.00,50.00,0.25,12.50,20.00,5m/1h,"cache read 0.025x"
+OpenAI,GPT-6.1 Sol,2.00,10.00,0.10,2.50,5.00,30m/12h,"short context <=272k; long context 4.00/15.00, cached 0.20"
+OpenAI,GPT-6.1 Terra,1.00,5.00,0.05,1.25,2.50,30m/12h,"short context <=272k; long context 2.00/7.50, cached 0.10"
+OpenAI,GPT-6 Luna,0.10,0.50,0.01,0.125,0.25,30m/12h,"short context <=272k; long context 0.20/0.75, cached 0.02"
+OpenAI,GPT-6 Astra,10.00,50.00,1.00,12.50,25.00,30m/12h,"short context <=272k; long context 20.00/75.00, cached 2.00"
+OpenCode Console,DeepSeek V4.1 Flash,0.30,1.20,0.006,,,n/a,"cache read is 0.02x; no cache-write column published"
+OpenCode Console,GLM 5.3 Flash,0.15,0.50,0.03,,,n/a,"no cache-write column published"
