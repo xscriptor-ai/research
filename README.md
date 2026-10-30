@@ -1,6 +1,6 @@
 # Xscriptor Research
 
-Research dossiers on AI systems: watermarking, model behavior, security, and regulation.
+Research dossiers on AI systems: watermarking, model behavior, agent economics and performance, security, and regulation.
 
 Each topic is a self-contained folder with its own `README.md` index.
 
@@ -9,6 +9,7 @@ Each topic is a self-contained folder with its own `README.md` index.
 | Topic | Content |
 |---|---|
 | [ai-trace](ai-trace/) | Invisible traces in language models — company/model watermarking catalogue, statistical marks and Unicode carriers, detection, and realistic mitigation (EU AI Act and Chinese labeling regimes). |
+| [multiagents-panorama-2026-10-30-1340](multiagents-panorama-2026-10-30-1340/) | Multi-agent panorama for Claude Code, Codex and OpenCode — economics (tokens, cache, break-even), acceleration and latency (Amdahl, coordination), project quality and delivery, and cases across languages, application types, documentation and papers, plus agnostic conversion and a bilingual (EN/ES) playbook. Prices verified October 2026. |
 
 ## Adding a topic
 
