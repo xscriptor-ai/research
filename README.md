@@ -20,4 +20,6 @@ Each topic is a self-contained folder with its own `README.md` index.
 
 ## License
 
-MIT
+Licensed under [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE)
+(CC-BY-SA-4.0). Reuse and redistribution are welcome with attribution and
+under the same license; see [NOTICE](NOTICE) for the preferred credit.
